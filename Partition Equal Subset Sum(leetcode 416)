@@ -1,0 +1,24 @@
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        nums_sum=sum(nums)
+        
+        if nums_sum%2:
+            return False
+        
+        sum_to_find=nums_sum//2
+        
+        n=len(nums)
+        dp=[[False]*(sum_to_find+1) for i in range(n+1)]
+        
+        
+        for i in range(n+1):
+            for j in range(sum_to_find+1):
+                if j==0:
+                    dp[i][j]=True
+                elif j>=nums[i-1]:
+                    dp[i][j]=dp[i-1][j-nums[i-1]] or dp[i-1][j] 
+                else:
+                    dp[i][j]=dp[i-1][j]
+        
+        
+        return dp[n][sum_to_find]
