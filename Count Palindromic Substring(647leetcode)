@@ -1,0 +1,20 @@
+class Solution:####### explanation in pepcoding
+    def countSubstrings(self, s: str) -> int:
+        
+        count=0
+        
+        dp=[[False for i in range(len(s))] for j in range(len(s))]
+        
+        for l in range(len(s)):
+            for i in range(len(s)-l):
+                j=l+i
+                
+                if s[i]==s[j]:
+                    if i==j or i==j-1:
+                        dp[i][j]=True
+                    else:
+                        dp[i][j]=dp[i+1][j-1]
+                    
+                    count+=dp[i][j]
+        return count
+                
