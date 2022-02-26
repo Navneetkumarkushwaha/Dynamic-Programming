@@ -1,0 +1,34 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+    # for getting maximum profit we have to get minimum from left
+        
+        m=float('inf')
+        ans=[]
+        for i in range(len(prices)):
+            m=min(m,prices[i])
+            ans.append(m)
+        ma=float('-inf')
+        arr=[]
+        for i in range(len(prices)):
+            arr.append(prices[i]-ans[i])
+        return max(arr)
+        
+        
+        
+        
+        # n=len(prices)
+        # arr=[0]*(n)
+        # def fun(prices):
+        #     m=-9999
+        #     for i in range(n-1,-1,-1):
+        #         m=max(m,prices[i])
+        #         arr[i]=m
+        # fun(prices)
+        # ans=0
+        # for i in range(n):
+        #     temp=arr[i]-prices[i]
+        #     ans=max(ans,temp)
+        # return ans
+                   
+                
+        
